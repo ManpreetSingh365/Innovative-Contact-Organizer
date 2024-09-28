@@ -1,3 +1,3 @@
-### Canvas Link:
+### ICO made by- Manpreet Singh:
 
-https://excalidraw.com/#json=SIuQrQnGQr9DGkCVc8BWD,JqVceoohF0UsTfllkzdRmw
+https://manpreetsingh.vercel.app/
