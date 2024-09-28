@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+	<title data-th-text="${loggedInUser.name}+' |  Inovative Contact Organizer'">Profile Page</title>
+</head>
+
+<body>
+	<div id="content">
+		<!-- sidebar -->
+
+		<!-- user is logged in : sidebar -->
+
+		<div th:if="${loggedInUser}">
+			<div data-th-replace="~{user/sidebar :: sidebar}"></div>
+		</div>
+
+		<div class="sm:pl-64 pt-20" style="height: 1000px">
+			<div class="flex items-center justify-center md:pt-32 flex-col">
+				<!--  profie card -->
+				<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-2xl w-full">
+					<div class="flex flex-col items-center">
+
+						<!-- this is  form -->
+						<form novalidate class="mt-5" method="post" th:action="@{'/user/update/userDetailsUpdateForm'}"
+							data-th-object="${userForm}" enctype="multipart/form-data">
+							<!-- Profile Pic  -->
+							<label class="block mb-2 font-bold text-sm font-medium text-gray-900 dark:text-white"
+								for="multiple_files">Change
+								your Images</label>
+							<input
+								class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+								id="image_file_input" name="userImage" type="file">
+
+							<!-- name  -->
+							<div class="mb-3 mt-3">
+								<label for="email"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Name</label>
+								<input type="text" data-th-field="*{name}" id="name"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Enter here" required />
+
+								<p data-th-if="${#fields.hasErrors('name')}" data-th-errors="*{name}"
+									class="text-red-600 px-1 py-2">
+									Name is required
+								</p>
+							</div>
+							<!-- email field -->
+							<div class="mb-3">
+								<label for="email"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+								<input type="email" data-th-field="*{email}" id="email"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="name@flowbite.com" required />
+								<p data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"
+									class="text-red-600 px-1 py-2"></p>
+							</div>
+
+							<!-- Phone field -->
+							<div class="mb-3">
+								<label for="phone"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact
+									Number</label>
+								<input type="text" data-th-field="*{phoneNumber}" id="phone"
+									class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									required />
+
+								<p data-th-if="${#fields.hasErrors('phoneNumber')}" data-th-errors="*{phoneNumber}"
+									class="text-red-600 px-1 py-2"></p>
+							</div>
+
+							<!-- about textarea -->
+							<div class="mb-3">
+								<label for="about"
+									class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Write something
+									about yourself</label>
+								<textarea id="about" data-th-field="*{about}" rows="6"
+									class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+									placeholder="Write here..."></textarea>
+
+								<p data-th-if="${#fields.hasErrors('about')}" data-th-errors="*{about}"
+									class="text-red-600 px-1 py-2"></p>
+							</div>
+
+							<!-- button -->
+							<div class="mb-3 flex justify-center space-x-3">
+								<button type="submit"
+									class="text-center  bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 rounded-lg text-md px-8 py-2.5 ">
+									Save
+								</button>
+							</div>
+						</form>
+
+
+						<div class="w-full flex justify-between">
+							<p class="text-sm text-gray-500">Email Verified: <span class="font-medium text-gray-700"
+									id="email-verified"
+									data-th-text="${loggedInUser.emailVerified ? 'YES':'NO'}">No</span></p>
+							<p class="text-sm text-gray-500">Phone Verified: <span class="font-medium text-gray-700"
+									id="phone-verified"
+									data-th-text="${loggedInUser.phoneVerified ? 'YES':'NO'}">No</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			console.log("this is profile page");
+		</script>
+</body>
+
+</html>

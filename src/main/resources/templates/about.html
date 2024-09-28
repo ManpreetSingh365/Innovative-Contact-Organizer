@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}">
+
+<head>
+	<title>About Page</title>
+</head>
+
+<body>
+	<div id="content">
+		<!-- Map Column -->
+		<div class="flex flex-col flex-wrap">
+			<center>
+
+				<h1 class="text-3xl font-bold">Mine Location</h1>
+				<div class="mt-5">
+					<iframe
+						src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d928.8240699514306!2d74.89480640007399!3d31.60675083241512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39197df79c7b7ddd%3A0xe04d14f37db3282a!2sWebsite%20Developer!5e0!3m2!1sen!2sin!4v1726246295150!5m2!1sen!2sin"
+						width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+						referrerpolicy="no-referrer-when-downgrade"></iframe>
+				</div>
+			</center>
+		</div>
+
+	</div>
+	<script>
+		console.log("about page");
+	</script>
+	<script>
+		console.log("second about page script");
+	</script>
+</body>
+
+</html>
